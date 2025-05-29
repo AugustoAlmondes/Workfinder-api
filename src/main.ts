@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import * as process from 'process';
 
 (BigInt.prototype as any).toJSON = function () {
   return this.toString();
