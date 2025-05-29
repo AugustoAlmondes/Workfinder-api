@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { PrismaService } from './database/prisma.service';
 import { WorkfinderModuleModule } from './workfinder-module/workfinder-module.module';
+import { WorkfinderService } from './workfinder/workfinder.service';
+import { WorkfinderControllerController } from './workfinder-controller/workfinder-controller.controller';
 
 @Module({
   imports: [WorkfinderModuleModule],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [WorkfinderControllerController],
+  providers: [WorkfinderService,PrismaService],
 })
 export class AppModule {}
