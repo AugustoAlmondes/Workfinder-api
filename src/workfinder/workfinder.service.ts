@@ -1,6 +1,6 @@
+import { UsuarioDto } from 'src/dto/usuario.dto';
 import { Injectable } from '@nestjs/common';
-import { UsuarioDto } from './dto/usuario.dto';
-import { PrismaService } from 'src/database/prisma.service';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class WorkfinderService {
@@ -22,13 +22,14 @@ export class WorkfinderService {
 
     async delete(email: string) {
         const usuarioExist = await this.prisma.usuario.findUnique({
-            where: { email: email }})
+            where: { email: email }
+        })
 
-            if(usuarioExist){
-                return await this.prisma.usuario.delete({
-                    where: { email: email }
-                })
-            }
+        if (usuarioExist) {
+            return await this.prisma.usuario.delete({
+                where: { email: email }
+            })
+        }
     }
 
     async update(id: number, data: UsuarioDto) {
@@ -43,4 +44,16 @@ export class WorkfinderService {
             });
         }
     }
+
+    async findOne(email: string, data: UsuarioDto) {
+        const usuarioExist = await this.prisma.usuario.findUnique({
+            where: { email: email }
+        })
+
+        if (usuarioExist) {
+            return usuarioExist
+        }
+        return null;
+    }
+
 }

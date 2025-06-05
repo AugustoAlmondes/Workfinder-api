@@ -18,6 +18,7 @@ export default tseslint.config(
         ...globals.jest,
       },
       sourceType: 'commonjs',
+      prettier: true,
       parserOptions: {
         projectService: true,
         tsconfigRootDir: import.meta.dirname,

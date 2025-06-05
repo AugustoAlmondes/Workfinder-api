@@ -1,13 +1,9 @@
 import { Module } from '@nestjs/common';
-import { PrismaService } from './database/prisma.service';
-import { WorkfinderModuleModule } from './workfinder-module/workfinder-module.module';
-import { WorkfinderService } from './workfinder/workfinder.service';
-import { WorkfinderControllerController } from './workfinder-controller/workfinder-controller.controller';
-import { TasksModule } from './tasks/tasks.module';
+import { WorkfinderModuleModule } from './workfinder/workfinder.module';
+import { AuthModule } from './authentication/auth.module';
+import { DatabaseModule } from './prisma/prisma.module';
 
 @Module({
-  imports: [WorkfinderModuleModule, TasksModule],
-  controllers: [WorkfinderControllerController],
-  providers: [WorkfinderService,PrismaService],
+  imports: [WorkfinderModuleModule, AuthModule,DatabaseModule],
 })
-export class AppModule {}
+export class AppModule { }
