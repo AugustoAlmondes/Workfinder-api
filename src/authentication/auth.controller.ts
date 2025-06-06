@@ -1,14 +1,27 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { AuthService } from 'src/authentication/auth.service';
-import { Usuario } from 'generated/prisma';
+import { UsuarioDto } from 'src/dto/usuario.dto';
+import { EmpresaDto } from 'src/dto/empresa.dto';
 
 @Controller('auth')
 export class AuthController {
     constructor(private readonly authService: AuthService) { }
 
-    @Post('login')
-    async login(@Body() data: Usuario) {
+    @Post('login-user')
+    async loginUser(@Body() data: UsuarioDto) {
         const { email, senha } = data;
-        return this.authService.login(email, senha);
+        return this.authService.loginUser(email, senha);
+    }
+
+    @Post('login-firm')
+    async loginFirm(@Body() data: EmpresaDto) {
+        const {email, senha} = data;
+        return this.authService.loginFirms(email, senha);
+    }
+
+    @Post('register-user')
+    async registerUser(@Body() data: UsuarioDto) {
+        data
+        return this.authService.registerUser(data);
     }
 }
