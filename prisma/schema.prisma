@@ -24,8 +24,8 @@ model Vaga {
   modality     String   @db.VarChar(100)
   amount       Int
   areaActivity String   @db.VarChar(255)
-  pcd          Pcd
-  cnh          Cnh      @default(none)
+  pcd          String 
+  cnh          String
   salary       String
   benefits     String
   description  String
@@ -34,20 +34,20 @@ model Vaga {
   @@map("vaga")
 }
 
-enum Pcd {
-  sim
-  não
-}
+// enum Pcd {
+//   sim
+//   não
+// }
 
-enum Cnh {
-  A
-  B
-  C
-  D
-  E
-  AB
-  none
-}
+// enum Cnh {
+//   A
+//   B
+//   C
+//   D
+//   E
+//   AB
+//   none
+// }
 
 
 model Usuario {

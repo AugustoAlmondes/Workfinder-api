@@ -45,4 +45,8 @@ export class AuthService {
         return user;
     }
 
+    async registerFirm(data: EmpresaDto) {
+        const empresa = await this.prisma.empresa.create({ data });
+        return empresa;
+    }
 }

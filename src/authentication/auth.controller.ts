@@ -24,4 +24,10 @@ export class AuthController {
         data
         return this.authService.registerUser(data);
     }
+
+    @Post ('register-firm')
+    async registerFirm(@Body() data: EmpresaDto) {
+        data
+        return this.authService.registerFirm(data);
+    }
 }
