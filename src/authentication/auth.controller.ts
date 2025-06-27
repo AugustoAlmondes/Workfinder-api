@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Post } from '@nestjs/common';
 import { AuthService } from 'src/authentication/auth.service';
 import { UsuarioDto } from 'src/dto/usuario.dto';
 import { EmpresaDto } from 'src/dto/empresa.dto';
@@ -30,4 +30,9 @@ export class AuthController {
         data
         return this.authService.registerFirm(data);
     }
+
+    // @Delete('delete-all')
+    // async deleteAll() {
+    //     return this.authService.deleteAll();
+    // }
 }
